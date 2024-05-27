@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\RequestResource\RelationManagers;
 
+use Filament\Forms\Components\KeyValue;
 use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
@@ -17,6 +18,8 @@ class ResponsesRelationManager extends RelationManager
     {
         return $form
             ->schema([
+                KeyValue::make('headers'),
+                PrettyJson::make('body'),
                 PrettyJson::make('response'),
             ])->columns(1);
     }

@@ -13,6 +13,7 @@ class Response extends Model
 
     protected $casts = [
         'body' => 'json',
-        'response' => 'json'
+        'response' => 'json',
+        'headers' => 'json',
     ];
 }
