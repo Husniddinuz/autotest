@@ -19,8 +19,9 @@ class ResponsesRelationManager extends RelationManager
         return $form
             ->schema([
                 KeyValue::make('headers'),
+                KeyValue::make('validation_issues'),
                 PrettyJson::make('body'),
-                PrettyJson::make('response'),
+//                PrettyJson::make('response'),
             ])->columns(1);
     }
 

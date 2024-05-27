@@ -15,5 +15,6 @@ class Response extends Model
         'body' => 'json',
         'response' => 'json',
         'headers' => 'json',
+        'validation_issues' => 'json',
     ];
 }

@@ -58,6 +58,19 @@ class RequestResource extends Resource
                     ->visible(fn(Get $get):bool => $get('save_token'))
 
                     ->hint('The path to the token in the response body'),
+                Forms\Components\Repeater::make('validations')
+                    ->relationship('validations')
+                    ->schema([
+                        Forms\Components\TextInput::make('key'),
+                        Forms\Components\Select::make('type')
+                            ->options([
+                                'string' => 'String',
+                                'integer' => 'Integer',
+                                'boolean' => 'Boolean',
+                                'array' => 'Array',
+                                'object' => 'Object',
+                            ]),
+                    ])->columns()
             ])->columns(1);
     }
 

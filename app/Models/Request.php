@@ -31,4 +31,9 @@ class Request extends Model
     {
         return $this->hasMany(Variable::class);
     }
+
+    public function validations(): HasMany
+    {
+        return $this->hasMany(ResponseValidation::class);
+    }
 }
