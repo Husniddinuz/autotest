@@ -8,6 +8,7 @@ use App\Models\Project;
 use App\Models\Request;
 use Filament\Forms;
 use Filament\Forms\Form;
+use Filament\Forms\Get;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -51,7 +52,12 @@ class RequestResource extends Resource
                     ->numeric()
                     ->hint('Which kinda status code returns if this test case is successful?')
                     ->required(),
-                Forms\Components\Toggle::make('token_needed')
+                Forms\Components\Toggle::make('token_needed'),
+                Forms\Components\Toggle::make('save_token')->live(),
+                Forms\Components\TextInput::make('token_path')
+                    ->visible(fn(Get $get):bool => $get('save_token'))
+
+                    ->hint('The path to the token in the response body'),
             ])->columns(1);
     }
 

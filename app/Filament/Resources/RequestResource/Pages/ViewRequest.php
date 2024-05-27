@@ -4,11 +4,9 @@ namespace App\Filament\Resources\RequestResource\Pages;
 
 use App\Filament\Resources\RequestResource;
 use Filament\Actions;
-use Filament\Forms\Components\Livewire;
 use Filament\Forms\Components\Select;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\ViewRecord;
-use Filament\Resources\RelationManagers\RelationManager;
 use Illuminate\Support\Facades\Http;
 
 class ViewRequest extends ViewRecord
@@ -54,6 +52,13 @@ class ViewRequest extends ViewRecord
                         'environment' => ($data['environment'] === 'production_url') ? 1 : 0,
                         'message' => $status ? 'Test passed successfully' : 'Test failed due to status code mismatch.'
                     ]);
+
+                    if($req->save_token){
+                        $token = $response->json($req->token_path);
+                        $project->update([
+                            'token' => $token
+                        ]);
+                    }
 
                     if($status){
                         Notification::make()
