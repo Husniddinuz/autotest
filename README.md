@@ -1,7 +1,7 @@
 
 ## Installation
 
-Install my-project with npm
+Clone project from github
 
 ```bash
 php artisan migrate
